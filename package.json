@@ -1,0 +1,22 @@
+{
+    "name": "theme-kay",
+    "displayName": "KayTheme",
+    "description": "",
+    "version": "0.0.1",
+    "publisher": "kube",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Kay",
+                "uiTheme": "vs-dark",
+                "path": "./themes/Kay.tmTheme"
+            }
+        ]
+    }
+}
