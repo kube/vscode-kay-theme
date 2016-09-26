@@ -2,7 +2,7 @@
     "name": "theme-kay",
     "displayName": "KayTheme",
     "description": "",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "kube",
     "engines": {
         "vscode": "^1.0.0"
