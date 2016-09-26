@@ -288,7 +288,7 @@
 	<key>colorSpaceName</key>
 	<string>sRGB</string>
 	<key>semanticClass</key>
-	<string>theme.dark.monokai</string>
+	<string>theme.dark.kay</string>
 	<key>author</key>
 	<string>Kube</string>
 </dict>
