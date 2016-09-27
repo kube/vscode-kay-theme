@@ -1,27 +1,27 @@
 {
-    "name": "theme-kay",
-    "displayName": "KayTheme",
-    "description": "",
-    "version": "0.0.3",
-    "publisher": "kube",
-    "engines": {
-        "vscode": "^1.0.0"
-    },
-    "categories": [
-        "Themes"
-    ],
-    "contributes": {
-        "themes": [
-            {
-                "label": "Kay Dark",
-                "uiTheme": "vs-dark",
-                "path": "./themes/Dark.tmTheme"
-            },
-            {
-                "label": "Kay Light",
-                "uiTheme": "vs",
-                "path": "./themes/Light.tmTheme"
-            }
-        ]
-    }
+  "name": "theme-kay",
+  "displayName": "KayTheme",
+  "description": "",
+  "version": "0.0.3",
+  "publisher": "kube",
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Kay Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Dark.tmTheme"
+      },
+      {
+        "label": "Kay Light",
+        "uiTheme": "vs",
+        "path": "./themes/Light.tmTheme"
+      }
+    ]
+  }
 }
