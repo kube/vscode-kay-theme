@@ -3,7 +3,7 @@
   "displayName": "Kay theme",
   "description": "80's neon lights theme",
   "version": "0.2.0",
-  "icon": "./icon.png",
+  "icon": "icon.png",
   "publisher": "kube",
   "engines": {
     "vscode": "^1.0.0"
