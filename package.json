@@ -2,7 +2,7 @@
   "name": "theme-kay",
   "displayName": "Kay theme",
   "description": "80's neon lights theme",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "icon": "icon.png",
   "publisher": "kube",
   "engines": {
@@ -16,17 +16,12 @@
       {
         "label": "Kay Light",
         "uiTheme": "vs",
-        "path": "./themes/Light.tmTheme"
+        "path": "./themes/Light.json"
       },
       {
         "label": "Kay Dark",
         "uiTheme": "vs-dark",
-        "path": "./themes/Dark.tmTheme"
-      },
-      {
-        "label": "Kay Contrast",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Contrast.tmTheme"
+        "path": "./themes/Dark.json"
       }
     ]
   }
