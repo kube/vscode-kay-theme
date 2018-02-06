@@ -2,7 +2,7 @@
   "name": "theme-kay",
   "displayName": "Kay theme",
   "description": "80's neon lights theme",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/kube/vscode-kay-theme"
