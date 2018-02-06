@@ -19,7 +19,7 @@
     "editorCursor.foreground": "#6a819e",
     "editorWhitespace.foreground": "#282f40",
     "editorLineNumber.foreground": "#ccccff31",
-    "tab.inactiveBackground": "#101114",
+    "tab.inactiveBackground": "#0c0e12",
     "tab.border": "#ffffff07",
     "tab.inactiveForeground": "#ffffff42",
     "editorGroupHeader.tabsBackground": "#101114",
@@ -30,11 +30,11 @@
     "sideBar.foreground": "#ffffffcc",
     "sideBar.border": "#ffffff0f",
     "sideBarTitle.foreground": "#ffffff42",
-    "sideBarSectionHeader.background": "#00000000",
+    "sideBarSectionHeader.background": "#0c0e12",
     "sideBarSectionHeader.foreground": "#ffffff94",
     "titleBar.inactiveForeground": "#ffffff67",
-    "titleBar.activeBackground": "#101114",
-    "titleBar.inactiveBackground": "#101114"
+    "titleBar.activeBackground": "#0c0e12",
+    "titleBar.inactiveBackground": "#0c0e12"
   },
   "tokenColors": [
     {
