@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Dark Theme: Fixes
+
 ## 1.0.1
 
 * Dark Theme: Remove contrast between SideBar and TitleBar.
