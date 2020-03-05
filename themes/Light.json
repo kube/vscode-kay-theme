@@ -2,6 +2,9 @@
   "type": "light",
   "colors": {
     "focusBorder": "#3c7eeb31",
+    "statusBar.background": "#ecebea",
+    "statusBar.foreground": "#000000cc",
+    "statusBar.border": "#0000000f",
     "input.background": "#ffffff22",
     "input.border": "#b0b1d82f",
     "list.focusBackground": "#4c5ead58",
