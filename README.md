@@ -1,4 +1,4 @@
-# Kay theme
+# Kay theme for VSCode.
 
 Focus on code.
 
