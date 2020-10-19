@@ -1,0 +1,108 @@
+
+      #########.
+     ########",#:
+   #########',##".
+  ##'##'## .##',##.
+   ## ## ## # ##",#.
+    ## ## ## ## ##'
+     ## ## ## :##
+      ## ## ##."
+
+name: Build
+
+on: [push]
+
+jobs:
+  #
+  # Install
+  #
+  install:
+    name: Install
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+
+      - run: yarn install
+
+  #
+  # Build
+  #
+  build:
+    name: Build
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Load node_modules
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+
+      - run: yarn build
+
+      - name: Persist dist
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
+
+  #
+  # Publish on VSCode Marketplace
+  #
+  publish-vscode:
+    name: Publish to VSCode Marketplace
+    runs-on: ubuntu-latest
+    needs: build
+
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get version in current branch
+        id: branch-version
+        run: echo "##[set-output name=value;]$(jq -r .version package.json)"
+
+      - name: Check if version exists on VSCode Marketplace
+        id: marketplace-version
+        run: echo "##[set-output name=value;]$(npx vsce show --json kube.theme-kay | jq -r .versions[0].version)"
+
+      - name: Version update detected
+        if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
+        run: 'echo "Version update found:\n  Current: ${{ steps.marketplace-version.outputs.value }}.\n  New: ${{ steps.branch-version.outputs.value }}"'
+
+      - name: Load dist
+        if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+
+      - name: Publish package to VSCode Marketplace
+        if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
+        env:
+          VSCODE_AUTH_TOKEN: ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
+        run: npx vsce publish --yarn -p $VSCODE_AUTH_TOKEN
