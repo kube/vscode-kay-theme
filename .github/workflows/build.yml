@@ -63,11 +63,11 @@ jobs:
 
       - run: yarn build
 
-      - name: Persist dist
-        uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          path: dist
+      # - name: Persist dist
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: dist
+      #     path: dist
 
   #
   # Publish on VSCode Marketplace
@@ -95,11 +95,11 @@ jobs:
         if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
         run: 'echo "Version update found:\n  Current: ${{ steps.marketplace-version.outputs.value }}.\n  New: ${{ steps.branch-version.outputs.value }}"'
 
-      - name: Load dist
-        if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
-        uses: actions/download-artifact@v2
-        with:
-          name: dist
+      # - name: Load dist
+      #   if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: dist
 
       - name: Publish package to VSCode Marketplace
         if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
