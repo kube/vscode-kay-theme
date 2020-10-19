@@ -1,6 +1,9 @@
 {
+	"$schema": "vscode://schemas/color-theme",
   "type": "dark",
   "colors": {
+    "tab.activeBorderTop": "#ffffff10",
+    "tab.unfocusedActiveBorderTop": "#ffffff10",
     "focusBorder": "#3c7eeb42",
     "input.background": "#ffffff09",
     "input.border": "#b0b1d80f",
