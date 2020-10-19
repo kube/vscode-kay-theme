@@ -1,5 +1,9 @@
 ## 1.0.2
 
+* Add border on top of tabs
+
+## 1.0.2
+
 * Dark Theme: Fixes
 
 ## 1.0.1
