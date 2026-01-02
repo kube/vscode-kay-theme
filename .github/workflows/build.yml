@@ -21,18 +21,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: 12.x
+          node-version: 20.x
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: yarn-cache
         with:
           path: '**/node_modules'
@@ -49,14 +49,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
 
       - name: Load node_modules
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
@@ -81,15 +81,15 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Get version in current branch
         id: branch-version
-        run: echo "##[set-output name=value;]$(jq -r .version package.json)"
+        run: echo "value=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Check if version exists on VSCode Marketplace
         id: marketplace-version
-        run: echo "##[set-output name=value;]$(npx vsce show --json kube.theme-kay | jq -r .versions[0].version)"
+        run: echo "value=$(npx vsce show --json kube.theme-kay | jq -r .versions[0].version)" >> $GITHUB_OUTPUT
 
       - name: Version update detected
         if: steps.marketplace-version.outputs.value != steps.branch-version.outputs.value
@@ -119,15 +119,15 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: 20.x
 
       - name: Load node_modules
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
